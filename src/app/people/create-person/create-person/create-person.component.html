@@ -1,0 +1,30 @@
+<!-- Formulario reactive con material para crear una persona -->
+
+<h1 *ngIf="!idPerson">Crear Persona</h1>
+<h1 *ngIf="idPerson">Editar Persona</h1>
+
+<form [formGroup]="personForm" (ngSubmit)="createPerson()" class="form" >
+  <mat-form-field  appearance="outline" >
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name" formControlName="name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Last Nameido" formControlName="lastName">
+  </mat-form-field>
+  <mat-form-field appearance="outline" >
+    <mat-label>Mother's Last Name</mat-label>
+    <input matInput placeholder="Mother's Last Name" formControlName="mothersLastName">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Address</mat-label>
+    <input matInput placeholder="Address" formControlName="address">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Phone</mat-label>
+    <input matInput placeholder="Phone" formControlName="phone">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit"  [disabled]="!personForm.valid" *ngIf="!idPerson" >Crear</button>
+  <button mat-raised-button color="primary" type="submit"  [disabled]="!personForm.valid" *ngIf="idPerson" >Editar</button>
+</form>

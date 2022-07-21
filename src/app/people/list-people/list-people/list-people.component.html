@@ -1,0 +1,61 @@
+
+  <h1>Prueba Práctica de Global Primex</h1>
+
+
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Element" #input>
+  </mat-form-field>
+
+
+
+  <table mat-table [dataSource]="dataSource " class="mat-elevation-z8" >
+    <ng-container matColumnDef="name" >
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mothersLastName">
+      <th mat-header-cell *matHeaderCellDef> Mothers Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.mothersLastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <!-- add button to edit and delete en actions -->
+    <ng-container matColumnDef="actions" >
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element"  >
+        <button mat-icon-button (click)="editElement(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteElement(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter
+        "{{input.value}}"</td>
+    </tr>
+  </table>
+
+
+  <button class="create-person" mat-raised-button color="primary" (click)="createElement()">Create Persona</button>

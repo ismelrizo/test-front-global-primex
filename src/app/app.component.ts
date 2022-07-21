@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Person } from './models/person.model';
+import { PersonService } from './services/person.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'primex-front';
+
+
+
+  constructor(
+    ) {
+  }
+  ngOnInit(): void {
+
+  }
+
+
 }
